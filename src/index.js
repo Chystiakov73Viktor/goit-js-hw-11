@@ -27,7 +27,7 @@ function onFopmSubmit(evt) {
       const { hits, totalHits } = data;
       if (!totalHits || !searchQuery) {
         Notiflix.Notify.failure(
-          'hello Sorry, there are no images matching your search query. Please try again.'
+          'Sorry, there are no images matching your search query. Please try again.'
         );
         loadMore.hidden = true;
         return;
