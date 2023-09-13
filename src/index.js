@@ -46,7 +46,7 @@ function onFopmSubmit(evt) {
 }
 
 function onLoadMore() {
-  currentPage += 12;
+  currentPage += 1;
 
   fetchCardURL(searchQuery, currentPage, perPage)
     .then(data => {
