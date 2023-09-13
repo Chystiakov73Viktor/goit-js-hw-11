@@ -10,7 +10,7 @@ let currentPage = 1;
 let perPage = 40;
 
 loadMore.hidden = true;
-// console.log('hello')
+
 formEl.addEventListener('submit', onFopmSubmit);
 loadMore.addEventListener('click', onLoadMore);
 
@@ -19,6 +19,7 @@ function onFopmSubmit(evt) {
   searchQuery = evt.currentTarget.elements.searchQuery.value.trim();
   currentPage = 1;
   cardContainerEl.innerHTML = '';
+  loadMore.style.display = 'none';
   loadMore.hidden = true;
 
   fetchCardURL(searchQuery, currentPage, perPage)
@@ -26,14 +27,16 @@ function onFopmSubmit(evt) {
       const { hits, totalHits } = data;
       if (!totalHits || !searchQuery) {
         Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
+          'hello Sorry, there are no images matching your search query. Please try again.'
         );
+        loadMore.hidden = true;
         return;
       }
 
       cardContainerEl.insertAdjacentHTML('beforeend', cardMarkupImg(hits));
-      Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+      // Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
       if (currentPage !== totalHits) {
+        loadMore.style.display = 'block';
         loadMore.hidden = false;
       }
     })
@@ -43,7 +46,7 @@ function onFopmSubmit(evt) {
 }
 
 function onLoadMore() {
-  currentPage += 1;
+  currentPage += 12;
 
   fetchCardURL(searchQuery, currentPage, perPage)
     .then(data => {
@@ -52,6 +55,7 @@ function onLoadMore() {
       const totalPages = Math.ceil(totalHits / perPage);
 
       if (totalPages === currentPage) {
+        loadMore.style.display = 'none';
         loadMore.hidden = true;
         Notiflix.Notify.failure(
           "We're sorry, but you've reached the end of search results.",

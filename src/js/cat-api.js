@@ -10,17 +10,17 @@ export const fetchCardURL = async (query, page, perPage) => {
       params: {
         key: `${KEY}`,
         q: `${query}`,
+        page: `${page}`,
         per_page: `${perPage}`,
-        image_type: "photo",
-        orientation: "horizontal",
+        image_type: 'photo',
+        orientation: 'horizontal',
         safesearch: true,
-      }
-    }
-    );
+      },
+    });
     const todoItems = response.data;
     return todoItems;
   } catch (errors) {
-     Notiflix.Notify.failure(
+    Notiflix.Notify.failure(
       "We're sorry, but you've reached the end of search results.",
       {
         position: 'center-center',
