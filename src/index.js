@@ -35,8 +35,9 @@ async function onFopmSubmit(evt) {
     }
 
     cardContainerEl.insertAdjacentHTML('beforeend', cardMarkupImg(hits));
+    Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
 
-    if (currentPage !== totalHits) {
+    if (perPage < totalHits) {
       loadMore.style.display = 'block';
       loadMore.hidden = false;
     }
