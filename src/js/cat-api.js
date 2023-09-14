@@ -17,8 +17,8 @@ export const fetchCardURL = async (query, page, perPage) => {
         safesearch: true,
       },
     });
-    const todoItems = response.data;
-    return todoItems;
+    const data = response.data;
+    return data;
   } catch (errors) {
     Notiflix.Notify.failure(
       "We're sorry, but you've reached the end of search results.",
