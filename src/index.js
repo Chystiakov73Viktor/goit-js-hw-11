@@ -17,7 +17,7 @@ loadMore.addEventListener('click', onLoadMore);
 async function onFopmSubmit(evt) {
   evt.preventDefault();
   searchQuery = evt.currentTarget.elements.searchQuery.value.trim();
-  currentPage = 12;
+  currentPage = 1;
   cardContainerEl.innerHTML = '';
   loadMore.style.display = 'none';
   loadMore.hidden = true;
